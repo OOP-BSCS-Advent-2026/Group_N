@@ -23,20 +23,24 @@ public class GroupN_businessSimulator {
 
     // Method 1: Calculates discounted subtotal for one item
     public static double calculateItemSubtotal(int itemIndex, double price, int qty) {
-        double total = price * qty;
+    double total = price * qty;
 
-        // Apply discount rules based on item index
-        if (itemIndex == 0 && qty >= 5) {
-            total = total * 0.95; // 5% off
-        } else if (itemIndex == 2 && qty >= 10) {
-            total = total - 500;  // UGX500 off
-        } else if (itemIndex == 3 && qty >= 3) {
-            total = total * 0.90; // 10% off
-        }
-
-        return total;
+    // Apply discount rules based on item index
+    if (itemIndex == 0 && qty >= 5) {
+        total = total * 0.95; // 5% off
     }
 
+    if (itemIndex == 2 && qty >= 10) {
+        total = total - 500; // UGX 500 flat off
+    }
+
+    if (itemIndex == 3 && qty >= 3) {
+        total = total * 0.90; // 10% off
+    }
+    // Data Bundle (itemIndex 1) has no discount
+
+    return total;
+}
         //Method 2: Prints itemized receipt and calculates grand total
     public static void printReceipt(String[] items, double[] prices, int[] quantities) {
         System.out.println("RECEIPT");
